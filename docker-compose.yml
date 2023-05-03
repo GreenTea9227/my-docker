@@ -5,54 +5,24 @@ services:
       context: .
       dockerfile: dockerfile
     environment:
-      - testDbIp=mysql
+      - testDbIp=mariadb
     ports:
       - "8080:8080"
     depends_on:
-      - mysql
+      - mariadb
     networks:
       - nat
-  mysql:
-    image: mysql
+  mariadb:
+    image: mariadb
     environment:
       MYSQL_ROOT_PASSWORD: 1111
       MYSQL_DATABASE: gram__test
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
     ports:
       - "3306:3306"
 
     networks:
       - nat
-
-
-
-
-
-
-  grafana:
-    image: grafana/grafana
-    restart: on-failure
-    ports:
-      - "3000:3000"
-    networks:
-      - nat
-    depends_on:
-      - prometheus
-
-  prometheus:
-    image: prom/prometheus
-    restart: on-failure
-    ports:
-      - "9090:9090"
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    command:
-      - '--config.file=/etc/prometheus/prometheus.yml'
-    networks:
-      - nat
-
-
-
 
 networks:
   nat:

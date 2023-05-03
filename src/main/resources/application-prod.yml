@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://${testDbIp:127.0.0.1:3306}/gram__test?useSSL=false&ssl-mode=DISABLED
+    url: jdbc:mariadb://${testDbIp:172.17.0.1:3306}/gram__test
     username: root
     password: 1111
 
