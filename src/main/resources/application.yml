@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://${testDbIp:127.0.0.1:3306}/gram__test
+    username: root
+    password: 1111
+
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+    #        show_sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+
+my:
+  name: default
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+
+
+
